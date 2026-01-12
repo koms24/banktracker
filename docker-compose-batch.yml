@@ -1,13 +1,31 @@
-version: '3.8'
 
 services:
-  app:
+    
+  cloudflare-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare-tunnel-cash
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token eyJhIjoiZDBhMmM2MmM5NDAyODJiM2IyYTJhYWEzOTA4MDZhODgiLCJ0IjoiYzI1NzliYmItY2IwMC00MmMyLTk2ZmItNGJmNzcxYTBiYTRmIiwicyI6Ik1EbGxOVEkyTldFdE16Qm1NUzAwWm1Rd0xXRTNaak10T1RBMlltRm1NamhqWldJMCJ9
+    networks:
+      - firefly_iii
+  integrator:
     image: ghcr.io/dvankley/firefly-plaid-connector-2:latest
+    platform: linux/arm64
     hostname: plaidconnector
     volumes:
         - type: bind
-          source: "${HOST_APPLICATION_CONFIG_FILE_LOCATION}"
+          source: ./src/main/resources/application.yml
           target: /opt/fpc-config/application.yml
           read_only: true
     environment:
       - SPRING_CONFIG_LOCATION=/opt/fpc-config/application.yml
+    networks:
+      - firefly_iii
+
+volumes:
+   firefly_iii_upload:
+
+networks:
+  firefly_iii:
+    driver: bridge
+  
