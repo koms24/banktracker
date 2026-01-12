@@ -60,8 +60,8 @@ fireflyPlaidConnector2:
 #    personalAccessToken: TOKAAAAAN
   plaid: 
     url: https://production.plaid.com
-    clientId: 673ceb985f7fd300182eda2e
-    secret: 595bfd9200a57858f09d46000af9d4
+    clientId: 
+    secret: 
     # The number of transactions to fetch from Plaid at a time.
     # This doesn't have a major effect as in both batch and sync mode we have to retain data sets larger
     #   than just the Plaid transaction batch in memory to try to match up transfers.
@@ -143,11 +143,11 @@ fireflyPlaidConnector2:
       # You can set up Plaid Items using Plaid Quickstart https://github.com/plaid/quickstart
       # Note that Items can contain multiple Accounts, so you may re-use this access token in
       #   other entries in this YAML array
-      plaidItemAccessToken: access-production-4ea306dc-e2c5-42e7-a70b-ab588ed4dfcb
+      plaidItemAccessToken: a
       # The Plaid id for the account you want to sync.
       # You can retrieve this id from https://plaid.com/docs/api/accounts/#accountsget using an
       #   Item's access token after you've set it up.
-      plaidAccountId: rDmxp76zwKTRXqmV13dzhqammOQvd5cAK6zjM
+      plaidAccountId: 
   product:
     name: Firefly Plaid Connector 2
 logging:
