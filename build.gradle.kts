@@ -37,6 +37,8 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.26.3")
 }
 
+
+
 var generatePlaidClient = tasks.register<org.openapitools.generator.gradle.plugin.tasks.GenerateTask>("generatePlaidClient") {
     generatorName.set("kotlin")
     inputSpec.set(layout.projectDirectory.dir("specs").file("plaid-2020-09-14.yml").toString())
